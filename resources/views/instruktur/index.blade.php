@@ -16,9 +16,17 @@
     <div class="brand">
       <div class="mark">Instruktur<span>&Coach</span></div>
     </div>
-    <nav class="tabs">
+    <nav class="tabs" style="display: flex; align-items: center; gap: 16px;">
       <a href="{{ route('instruktur.index') }}" class="active">Daftar Instruktur</a>
-      <a href="{{ route('instruktur.create') }}">Tambah Instruktur</a>
+      
+      @if(auth()->user()->role === 'admin')
+        <a href="{{ route('instruktur.create') }}">Tambah Instruktur</a>
+      @endif
+
+      <form method="POST" action="{{ route('logout') }}" style="display:inline; margin-left: auto;">
+        @csrf
+        <button type="submit" class="btn-danger-text" style="cursor:pointer;">Logout</button>
+      </form>
     </nav>
   </div>
 </div>
@@ -29,7 +37,10 @@
       <h1 class="page-title">Daftar Instruktur & Pelatih Mitra</h1>
       <p class="page-desc">Data instruktur, nomor lisensi, dan keahlian cabang olahraga.</p>
     </div>
-    <a href="{{ route('instruktur.create') }}" class="btn btn-primary">+ Tambah Instruktur</a>
+
+    @if(auth()->user()->role === 'admin')
+      <a href="{{ route('instruktur.create') }}" class="btn btn-primary">+ Tambah Instruktur</a>
+    @endif
   </div>
 
   @if (session('success'))
@@ -62,7 +73,9 @@
           <th>Level</th>
           <th>Tarif / Sesi</th>
           <th>Status</th>
-          <th>Aksi</th>
+          @if(auth()->user()->role === 'admin')
+            <th>Aksi</th>
+          @endif
         </tr>
       </thead>
       <tbody>
@@ -81,6 +94,8 @@
           <td>{{ $d->level_sertifikasi }}</td>
           <td>Rp {{ number_format($d->tarif, 0, ',', '.') }}</td>
           <td><span class="badge badge-{{ strtolower($d->status) }}">{{ $d->status }}</span></td>
+          
+          @if(auth()->user()->role === 'admin')
           <td>
             <a class="btn-edit-text" href="{{ route('instruktur.edit', $d->id) }}">Edit</a>
             <form method="post" action="{{ route('instruktur.destroy', $d->id) }}" style="display:inline"
@@ -90,6 +105,7 @@
               <button type="submit" class="btn-danger-text">Hapus</button>
             </form>
           </td>
+          @endif
         </tr>
         @endforeach
       </tbody>
@@ -98,7 +114,9 @@
     @if ($instruktur->isEmpty())
     <div class="empty-state">
       <div class="big">Belum ada data instruktur</div>
-      <div>Klik "Tambah Instruktur" untuk mendaftarkan pelatih mitra pertama.</div>
+      @if(auth()->user()->role === 'admin')
+        <div>Klik "Tambah Instruktur" untuk mendaftarkan pelatih mitra pertama.</div>
+      @endif
     </div>
     @endif
   </div>
