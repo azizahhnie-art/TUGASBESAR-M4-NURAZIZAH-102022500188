@@ -84,17 +84,17 @@
                 <div class="form-grid-2">
                     <div class="col-span-2">
                         <label>Nama Lengkap</label>
-                        <input type="text" name="nama" value="{{ old('nama', $pelanggan->nama ?? '') }}" required>
+                        <input type="text" name="nama" value="{{ old('nama', $pelanggan->nama ?? '') }}" placeholder="Contoh: Budi Santoso" required>
                     </div>
 
                     <div>
                         <label>Alamat Email</label>
-                        <input type="email" name="email" value="{{ old('email', $pelanggan->email ?? '') }}">
+                        <input type="email" name="email" value="{{ old('email', $pelanggan->email ?? '') }}" placeholder="contoh@domain.com">
                     </div>
 
                     <div>
                         <label>No. HP / WhatsApp</label>
-                        <input type="text" name="no_hp" value="{{ old('no_hp', $pelanggan->no_hp ?? '') }}">
+                        <input type="text" name="no_hp" value="{{ old('no_hp', $pelanggan->no_hp ?? '') }}" placeholder="Contoh: 081234567890">
                     </div>
 
                     <div>
@@ -130,7 +130,7 @@
 
                     <div class="col-span-2">
                         <label>Alamat Domisili</label>
-                        <textarea name="alamat" rows="3">{{ old('alamat', $pelanggan->alamat ?? '') }}</textarea>
+                        <textarea name="alamat" rows="3" placeholder="Alamat lengkap domisili pelanggan...">{{ old('alamat', $pelanggan->alamat ?? '') }}</textarea>
                     </div>
                 </div>
 

@@ -809,7 +809,8 @@ tr:hover td {
     margin: 0 0 24px 0;
 }
 
-.form-card label {
+.form-card label,
+.form-card-wide label {
     display: block;
     font-size: 13.5px;
     font-weight: 600;
@@ -819,26 +820,58 @@ tr:hover td {
 
 .form-card input,
 .form-card select,
-.form-card textarea {
+.form-card textarea,
+.form-card-wide input,
+.form-card-wide select,
+.form-card-wide textarea {
     width: 100%;
     padding: 10px 14px;
     font-family: inherit;
     font-size: 14px;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
-    margin-bottom: 18px;
     box-sizing: border-box;
     background-color: #f8fafc;
+    color: var(--text-main);
     transition: all 0.15s ease;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+    margin-bottom: 18px;
+}
+
+.form-card-wide input,
+.form-card-wide select,
+.form-card-wide textarea {
+    margin-bottom: 0;
 }
 
 .form-card input:focus,
 .form-card select:focus,
-.form-card textarea:focus {
+.form-card textarea:focus,
+.form-card-wide input:focus,
+.form-card-wide select:focus,
+.form-card-wide textarea:focus {
     border-color: var(--primary);
     background-color: #ffffff;
     outline: none;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-card input[type="file"],
+.form-card-wide input[type="file"] {
+    background-color: #f8fafc;
+    border: 1px dashed var(--border-color);
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.form-card input[type="file"]:hover,
+.form-card-wide input[type="file"]:hover {
+    border-color: var(--primary);
+    background-color: var(--primary-light);
 }
 
 .form-button {
@@ -959,7 +992,12 @@ tr:hover td {
 .form-grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 20px 24px;
+}
+
+.form-grid-2 > div {
+    display: flex;
+    flex-direction: column;
 }
 
 .col-span-2 {
@@ -969,18 +1007,19 @@ tr:hover td {
 @media (max-width: 600px) {
     .form-grid-2 {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 }
 
 .form-card-wide {
-    max-width: 720px;
+    max-width: 760px;
     width: 100%;
     margin: 28px auto;
     background-color: #ffffff;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
-    padding: 32px;
-    box-shadow: var(--shadow-md);
+    padding: 32px 36px;
+    box-shadow: var(--shadow-sm);
 }
 
 .tabel-akun-demo {

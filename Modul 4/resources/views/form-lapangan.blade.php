@@ -153,7 +153,7 @@
                             </div>
                         @endif
                         <input type="file" id="foto" name="foto" accept="image/jpeg,image/png,image/jpg,image/webp">
-                        <small style="color: var(--text-light); display: block; margin-top: -12px; margin-bottom: 14px;">Format: JPG, PNG, WEBP (Maksimal 2 MB).</small>
+                        <small style="color: var(--text-muted); display: block; margin-top: 6px;">Format: JPG, PNG, WEBP (Maksimal 2 MB).</small>
                     </div>
 
                     <div class="col-span-2">
